@@ -27,9 +27,6 @@ public class LambdaFetchDataFunction implements RequestHandler<Map<String, Strin
     public List<Map<String, String>> handleRequest(Map<String, String> itemValues, Context context) {
         LambdaLogger logger = context.getLogger();
         try {
-            logger.log("ddb = " + ddb);
-            logger.log("TABLE_NAME = " + TABLE_NAME);
-            logger.log("AWS_REGION_VALUE = " + System.getenv("AWS_REGION_VALUE"));
             ScanRequest request = new ScanRequest().withTableName(TABLE_NAME);
             ScanResult response = ddb.scan(request);
             List<Map<String, String>> result = new ArrayList<>();
